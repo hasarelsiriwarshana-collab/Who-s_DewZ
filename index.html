@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Who's DewZ Official Site</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --blue: #299cff;
+      --blue2: #006eff;
+      --glass: rgba(255,255,255,0.12);
+      --border: rgba(255,255,255,0.25);
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "Segoe UI", sans-serif;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,140,255,.35), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(100,0,255,.30), transparent 35%),
+        linear-gradient(135deg, #020617, #061b3b, #020617);
+    }
+
+    /* Background glow */
+
+    .glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(0,140,255,.25);
+      filter: blur(100px);
+      z-index: -1;
+      animation: glowMove 8s infinite alternate ease-in-out;
+    }
+
+    .glow.one {
+      top: 10%;
+      left: -100px;
+    }
+
+    .glow.two {
+      bottom: 5%;
+      right: -100px;
+      background: rgba(80,0,255,.25);
+      animation-delay: 2s;
+    }
+
+    @keyframes glowMove {
+      from {
+        transform: translate(0,0) scale(1);
+      }
+      to {
+        transform: translate(100px,50px) scale(1.3);
+      }
+    }
+
+    /* Navigation */
+
+    nav {
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 30px);
+      max-width: 1000px;
+      padding: 12px 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: rgba(255,255,255,.10);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+
+      border-radius: 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
+
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+
+    .logo span {
+      color: #4db3ff;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-buttons button {
+      border: 1px solid rgba(255,255,255,.18);
+      color: white;
+      background: rgba(255,255,255,.08);
+      padding: 8px 13px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .nav-buttons button:hover {
+      background: #168cff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0,150,255,.5);
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+    }
+
+    .hero-badge {
+      padding: 8px 17px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      backdrop-filter: blur(15px);
+      margin-bottom: 20px;
+      animation: fadeUp 1s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 90px);
+      line-height: .95;
+      font-weight: 900;
+      letter-spacing: -4px;
+
+      background: linear-gradient(
+        120deg,
+        #ffffff,
+        #74c7ff,
+        #168cff,
+        #ffffff
+      );
+
+      -webkit-background-clip: text;
+      color: transparent;
+      background-size: 300% auto;
+      animation: textShine 5s linear infinite;
+    }
+
+    @keyframes textShine {
+      to {
+        background-position: 300% center;
+      }
+    }
+
+    .hero p {
+      margin-top: 20px;
+      max-width: 600px;
+      color: rgba(255,255,255,.72);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .scroll-btn {
+      margin-top: 35px;
+      padding: 14px 25px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: linear-gradient(
+        135deg,
+        rgba(0,140,255,.7),
+        rgba(0,70,255,.35)
+      );
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: .35s;
+      box-shadow: 0 0 30px rgba(0,130,255,.25);
+    }
+
+    .scroll-btn:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 40px rgba(0,150,255,.6);
+    }
+
+    /* Sections */
+
+    section {
+      width: min(1100px, calc(100% - 30px));
+      margin: 0 auto 80px;
+      padding: 35px;
+      border-radius: 35px;
+
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+
+      box-shadow:
+        0 25px 80px rgba(0,0,0,.25),
+        inset 0 1px rgba(255,255,255,.12);
+
+      scroll-margin-top: 100px;
+    }
+
+    section h2 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      color: rgba(255,255,255,.6);
+      margin-bottom: 25px;
+    }
+
+    /* Blue line animation */
+
+    section:target {
+      animation: sectionGlow 1.2s ease;
+    }
+
+    @keyframes sectionGlow {
+      0% {
+        box-shadow:
+          0 0 0 rgba(0,150,255,0),
+          inset 0 0 0 rgba(0,150,255,0);
+      }
+
+      50% {
+        box-shadow:
+          0 0 60px rgba(0,150,255,.8),
+          inset 0 0 30px rgba(0,150,255,.15);
+      }
+
+      100% {
+        box-shadow:
+          0 25px 80px rgba(0,0,0,.25),
+          inset 0 1px rgba(255,255,255,.12);
+      }
+    }
+
+    /* Font */
+
+    .drive-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      padding: 25px;
+      border-radius: 25px;
+      background: rgba(0,130,255,.12);
+      border: 1px solid rgba(80,180,255,.25);
+    }
+
+    .drive-icon {
+      font-size: 45px;
+    }
+
+    .drive-card h3 {
+      margin-bottom: 6px;
+    }
+
+    .drive-card p {
+      color: rgba(255,255,255,.6);
+    }
+
+    .open-btn {
+      white-space: nowrap;
+      padding: 13px 20px;
+      background: #168cff;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: .3s;
+    }
+
+    .open-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 30px rgba(0,140,255,.6);
+    }
+
+    /* Hashtags */
+
+    .hashtags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 13px 18px;
+      border-radius: 25px;
+
+      background: rgba(0,130,255,.13);
+      border: 1px solid rgba(70,170,255,.3);
+
+      color: #8fd2ff;
+      font-weight: 600;
+
+      transition: .3s;
+    }
+
+    .tag:hover {
+      background: #168cff;
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,140,255,.4);
+    }
+
+    /* Photo upload */
+
+    .upload-box {
+      min-height: 180px;
+      border: 2px dashed rgba(100,190,255,.35);
+      border-radius: 25px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      padding: 25px;
+
+      background: rgba(0,100,255,.06);
+      transition: .3s;
+    }
+
+    .upload-box:hover {
+      border-color: #168cff;
+      background: rgba(0,130,255,.12);
+    }
+
+    .plus {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #168cff;
+      font-size: 35px;
+      margin-bottom: 15px;
+
+      box-shadow: 0 0 35px rgba(0,140,255,.5);
+    }
+
+    #photoInput {
+      display: none;
+    }
+
+    .upload-btn {
+      padding: 12px 22px;
+      border-radius: 25px;
+      background: white;
+      color: #006eff;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    /* Gallery */
+
+    .gallery {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+      gap: 18px;
+    }
+
+    .photo-card {
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .download {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      color: white;
+      background: rgba(0,130,255,.35);
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .download:hover {
+      background: #168cff;
+    }
+
+    /* WhatsApp */
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      font-size: 31px;
+
+      box-shadow: 0 8px 35px rgba(37,211,102,.45);
+
+      z-index: 999;
+
+      animation: whatsappPulse 2s infinite;
+    }
+
+    @keyframes whatsappPulse {
+      0%,100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    /* Santa */
+
+    .santa {
+      position: fixed;
+      top: 18%;
+      left: -250px;
+      font-size: 55px;
+      z-index: 9999;
+      pointer-events: none;
+
+      opacity: 0;
+
+      animation: santaRide 10s linear infinite;
+    }
+
+    @keyframes santaRide {
+      0% {
+        left: -250px;
+        opacity: 0;
+        transform: scale(.8);
+      }
+
+      8% {
+        opacity: 1;
+      }
+
+      45% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+
+      100% {
+        left: 110%;
+        opacity: 0;
+      }
+    }
+
+    /* Footer */
+
+    footer {
+      text-align: center;
+      padding: 40px 20px 100px;
+      color: rgba(255,255,255,.5);
+    }
+
+    footer strong {
+      color: #55b5ff;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 10px 13px;
+      }
+
+      .logo {
+        font-size: 14px;
+      }
+
+      .nav-buttons {
+        gap: 4px;
+      }
+
+      .nav-buttons button {
+        padding: 7px 8px;
+        font-size: 11px;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      section {
+        padding: 25px 20px;
+        border-radius: 28px;
+      }
+
+      section h2 {
+        font-size: 28px;
+      }
+
+      .drive-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+      }
+
+      .photo-card img {
+        height: 140px;
+      }
+
+      .santa {
+        font-size: 40px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <!-- Navigation -->
+
+  <nav>
+    <div class="logo">
+      Who's <span>DewZ</span>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="goTo('font')">Font</button>
+      <button onclick="goTo('hashtags')">Viral Tips</button>
+      <button onclick="goTo('photos')">Background</button>
+    </div>
+  </nav>
+
+
+  <!-- Hero -->
+
+  <div class="hero">
+
+    <div class="hero-badge">
+      ✨ Official Creator Hub
+    </div>
+
+    <h1>
+      Who's DewZ
+    </h1>
+
+    <p>
+      Welcome to the official Who's DewZ website.
+      Find stylish fonts, viral hashtags and amazing
+      background photos — all in one place.
+    </p>
+
+    <button class="scroll-btn" onclick="goTo('font')">
+      Explore Now ↓
+    </button>
+
+  </div>
+
+
+  <!-- FONT -->
+
+  <section id="font">
+
+    <h2>🔤 Fonts</h2>
+
+    <p class="section-sub">
+      Explore and download our collection of stylish fonts.
+    </p>
+
+    <div class="drive-card">
+
+      <div>
+        <div class="drive-icon">📁</div>
+
+        <h3>
+          Who's DewZ Font Collection
+        </h3>
+
+        <p>
+          Open our Google Drive folder and explore the fonts.
+        </p>
+      </div>
+
+      <a
+        class="open-btn"
+        href="https://drive.google.com/drive/folders/1enDyQfeiAEu6l9kdFW_ZeSzSLj-jJ3Jf"
+        target="_blank"
+      >
+        Open Fonts →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- HASHTAGS -->
+
+  <section id="hashtags">
+
+    <h2>🔥 Viral Hashtags</h2>
+
+    <p class="section-sub">
+      Most popular tags for your TikTok videos.
+    </p>
+
+    <div class="hashtags">
+
+      <div class="tag">#foryou</div>
+      <div class="tag">#foryoupage</div>
+      <div class="tag">#popular</div>
+      <div class="tag">#trending</div>
+      <div class="tag">#viral</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BACKGROUND PHOTOS -->
+
+  <section id="photos">
+
+    <h2>🖼️ Background Photos</h2>
+
+    <p class="section-sub">
+      Add beautiful background photos and download them anytime.
+    </p>
+
+    <div class="upload-box">
+
+      <div class="plus">
+        +
+      </div>
+
+      <h3>
+        Add Your Photo
+      </h3>
+
+      <p style="color:rgba(255,255,255,.55); margin-top:7px;">
+        Select an image from your phone
+      </p>
+
+      <label class="upload-btn" for="photoInput">
+        Choose Photo
+      </label>
+
+      <input
+        id="photoInput"
+        type="file"
+        accept="image/*"
+      >
+
+    </div>
+
+    <div
+      id="gallery"
+      class="gallery"
+    ></div>
+
+  </section>
+
+
+  <!-- WhatsApp -->
+
+  <a
+    class="whatsapp"
+    href="https://wa.me/94764710434?text=Hi%20Who's%20DewZ%2C%20I%20need%20more%20details."
+    target="_blank"
+    aria-label="WhatsApp"
+  >
+    💬
+  </a>
+
+
+  <!-- Santa / Reindeer / Sleigh -->
+
+  <div class="santa">
+    🦌 🦌 🛷 🎅
+  </div>
+
+
+  <footer>
+
+    <p>
+      © 2026 <strong>Who's DewZ</strong>
+    </p>
+
+    <p style="margin-top:8px;">
+      Official Creator Hub
+    </p>
+
+  </footer>
+
+
+  <script>
+
+    /* Smooth navigation */
+
+    function goTo(id) {
+
+      const section = document.getElementById(id);
+
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      /*
+        Add a temporary blue glow
+      */
+
+      section.classList.remove("highlight");
+
+      setTimeout(() => {
+        section.classList.add("highlight");
+      }, 400);
+    }
+
+
+    /* Photo Upload */
+
+    const photoInput =
+      document.getElementById("photoInput");
+
+    const gallery =
+      document.getElementById("gallery");
+
+
+    photoInput.addEventListener(
+      "change",
+      function(event) {
+
+        const files = event.target.files;
+
+        for (const file of files) {
+
+          if (!file.type.startsWith("image/")) {
+            continue;
+          }
+
+          const imageURL =
+            URL.createObjectURL(file);
+
+
+          const card =
+            document.createElement("div");
+
+          card.className =
+            "photo-card";
+
+
+          const image =
+            document.createElement("img");
+
+          image.src =
+            imageURL;
+
+
+          const download =
+            document.createElement("a");
+
+          download.href =
+            imageURL;
+
+          download.download =
+            file.name;
+
+          download.className =
+            "download";
+
+          download.innerHTML =
+            "⬇ Download";
+
+
+          card.appendChild(image);
+          card.appendChild(download);
+
+          gallery.prepend(card);
+
+        }
+
+        /*
+          Reset input so the same image
+          can be selected again.
+        */
+
+        photoInput.value = "";
+
+      }
+    );
+
+
+    /* Santa animation random position */
+
+    const santa =
+      document.querySelector(".santa");
+
+
+    function randomSantaPosition() {
+
+      const positions = [
+        "12%",
+        "25%",
+        "42%",
+        "58%",
+        "72%"
+      ];
+
+      const random =
+        positions[
+          Math.floor(
+            Math.random() * positions.length
+          )
+        ];
+
+      santa.style.top = random;
+    }
+
+
+    randomSantaPosition();
+
+
+    setInterval(
+      randomSantaPosition,
+      10000
+    );
+
+  </script>
+
+</body>
+</html>
